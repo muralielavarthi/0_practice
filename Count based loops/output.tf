@@ -1,5 +1,5 @@
 output  "ami_details" {
-  value       = data.aws_ami.expense-project
+  value       = data.aws_ami.expense-project.id
 }
 
 output "default_vpc" {
