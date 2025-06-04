@@ -1,6 +1,6 @@
-resource "aws_security_group" "secg2" {
-  name        = "secg2"
-  description = "secg2"
+resource "aws_security_group" "secg3" {
+  name        = "secg3"
+  description = "secg3 desc"
   ingress {
     from_port   = 22
     to_port     = 22
@@ -13,14 +13,9 @@ resource "aws_security_group" "secg2" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
 }
 resource "aws_instance" "server1" {
   ami                    = "ami-09c813fb71547fc4f"
-  vpc_security_group_ids = [aws_security_group.secg2.id]
+  vpc_security_group_ids = [aws_security_group.secg3.id]
   instance_type          = "t3.micro"
-  tags = {
-    name    = "terraform-demo"
-    purpose = "terraform-pratice"
-  }
 }
