@@ -16,13 +16,13 @@ resource "aws_security_group" "sg22" {
 }
 
 resource "aws_instance" "expense-project" {
-  count = length(var.instances)
+  count                  = length(var.instances)
   ami                    = "ami-09c813fb71547fc4f"
   vpc_security_group_ids = [aws_security_group.sg22.id]
   instance_type          = "t3.micro"
-  tags=merge(var.common_tags,
-  {
-    Name=var.instances[count.index] # iterarting over the list
-    
+  tags = merge(var.common_tags,
+    {
+      Name = var.instances[count.index] # iterarting over the list
+
   })
 }
